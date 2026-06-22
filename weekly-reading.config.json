@@ -1,0 +1,56 @@
+{
+  "vaultRoot": "D:/ClaudeCode/KnowledgeBase/Ricky-KnowledgeBase",
+  "language": "zh-TW",
+  "routine": {
+    "provider": "claude",
+    "enabled": true,
+    "tested": false,
+    "dayOfWeek": "Saturday",
+    "time": "10:00",
+    "timezone": "Asia/Taipei"
+  },
+  "localScheduler": {
+    "enabled": false
+  },
+  "phoneReminder": {
+    "externalOnly": true,
+    "purpose": "remind user to open Claude and confirm weekly pick"
+  },
+  "weeklyPickCount": {
+    "main": 1,
+    "backup": 2
+  },
+  "freeOnly": true,
+  "confirmationRequiredBeforeIngest": true,
+  "allowedConceptDomains": [
+    "ai-engineering",
+    "ai-workflow",
+    "design",
+    "finance",
+    "french"
+  ],
+  "allowedSourceFolders": [
+    "articles",
+    "papers",
+    "videos",
+    "books"
+  ],
+  "paths": {
+    "runsDir": "runs",
+    "previewDirName": "ingest-preview"
+  },
+  "mainPickThreshold": {
+    "minSourceQuality": 3,
+    "minRelevance": 3,
+    "requireFreeAccessYes": true,
+    "requireDomainInAllowed": true
+  },
+  "modes": {
+    "default": "strict",
+    "available": ["strict", "quick"]
+  },
+  "processedPolicy": {
+    "markProcessedWhenConceptProduced": true,
+    "note": "weekly-reading source 若同輪已產出至少一篇 concept note 且 output notes/log 完成，可標 processed: true；concept note 內必含該 source 的 wikilink 以通過 lint"
+  }
+}
