@@ -44,9 +44,16 @@
 
 ## 6. Domain / Source Folder 規則
 
-- concept domain 只允許 `weekly-reading.config.json` 的 `allowedConceptDomains`：`ai-engineering / ai-workflow / design / finance / french`
+- concept domain 只允許 `weekly-reading.config.json` 的 `allowedConceptDomains`：`ai-engineering / ai-workflow / finance / french / psychology / sociology`
+- `psychology`、`sociology` 於 2026-07-31 加入。人際關係與親密關係主題依內容歸入兩者之一，不另設 domain。
 - source folder 只允許 `allowedSourceFolders`：`articles / papers / videos / books`
 - 法文來源按內容型態進 `raw/sources/articles/` 或 `raw/sources/papers/`，**不進 `raw/sources/french/`**（該資料夾為既有特殊資料區，v0 不自動寫入，也不修改 `tools/kb/new-source.mjs` 來支援它）
+
+### 候選來源管道
+
+- 除論文與部落格外，**免費取用的英文外刊**（Aeon、Psyche、Noema、Nautilus、The Conversation 等一般刊物）亦為可用候選來源，歸入 `raw/sources/articles/`。
+- 外刊是**新增的一種管道，不是主要來源**，也不是每週必選；`freeOnly: true` 與 Main Pick 的 Free Access 門檻照舊適用，付費牆刊物不得列為主選。
+- 評分時不因「來自外刊」加分或減分，與其他來源一同依五軸評分。
 
 ## 7. Routine 語意
 

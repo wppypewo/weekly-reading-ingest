@@ -34,6 +34,10 @@ description: 每週精讀策展——搜尋候選、評分、產出 1 主選 + 2
    - 不只看總分，需在報告中說明勝出理由、補的知識缺口、適合沉澱的概念、可能的專案連結、限制與風險。
    - **Main Pick 軟門檻**（對應 `config.mainPickThreshold`）：原則上必須同時滿足 `Source Quality ≥ 3`、`Relevance ≥ 3`、`Free Access = Yes`、`domain ∈ allowedConceptDomains`。候選非常特殊但未滿足上述條件時，**不得自動列為 Main Pick**，必須標記「需要人工決策」。此為軟門檻，不引入額外公式、不改五軸評分。
    - 主選原則上必須能歸入 `allowedConceptDomains` 之一；若全週最高品質候選無法歸入，不得自動列為主選，改列為備選並標記「需要人工 domain 決策」，且該篇 Obsidian Fit 評分需降低。
+   - **深度可行性評估**（2026-07-31 新增）：ingest 階段的 concept note 有 8,000 字硬性下限（見 `weekly-reading-ingest` SKILL 的「concept note 深度規格」）。**來源本身不設厚度門檻**——薄來源可以選——但主選必須在報告中回答「這個來源撐不撐得起 8,000 字」：
+     - 撐得起：說明理由（頁數／論證數量／數據量）。
+     - 撐不起：**必須在報告中列出要一併回溯的原始文獻清單**（標題 + 連結 + 厚度），作為主選的一部分。缺這份清單的薄來源不得列為 Main Pick。
+     - 嚴禁以「ingest 時再想辦法湊字數」帶過。字數是靠補材料達成，不是靠灌水達成。
 7. 產出候選報告（格式見下方），輸出到 Claude 界面。
 8. 若本地 Claude Code 可存取檔案，**另外**存一份到 `runs/YYYY-Www/candidates.md`；若執行環境無法存取本機檔案（例如 routine 在無檔案系統存取權的環境執行），報告只留在 Claude 界面對話中，不視為失敗，也不嘗試用任何方式寫入 Obsidian vault 來代替保存。
 
@@ -54,7 +58,9 @@ description: 每週精讀策展——搜尋候選、評分、產出 1 主選 + 2
 必須包含：
 
 - 本週主題判斷（預設主題 / 選題理由 / 是否使用手動連結 / 是否含當週熱門內容）
-- Main Pick（含 Title / Author / Source / URL / Language / Estimated Reading Time / Type / Free Access / Topic）
+- Main Pick（含 Title / Author / Source / URL / Language / Estimated Reading Time / **Source Weight** / Type / Free Access / Topic）
+  - **Source Weight**：論文標頁數，非論文標估計字數。不得留白，不得寫「未知」而不說明取得失敗的原因。
+  - 主選另需「深度可行性」欄位：撐得起 8,000 字 concept note 的理由，或要一併回溯的原始文獻清單。
 - Backup A（同上欄位 + 推薦理由）
 - Backup B（同上欄位 + 推薦理由）
 - 每篇五項評分：
