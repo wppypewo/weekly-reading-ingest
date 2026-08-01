@@ -9,7 +9,7 @@
 raw/sources/<allowedSourceFolders 之一>/        ← articles | papers | videos | books（不含 french）
 wiki/concepts/<allowedConceptDomains 之一>/
 wiki/outputs/weekly-reading/project-links/
-wiki/outputs/weekly-reading/review-cards/
+wiki/outputs/weekly-reading/review-cards/   ← 僅歷史檔案；2026-08-01 起停產，流程不再寫入
 meta/weekly-reading/log.md
 ```
 
@@ -45,7 +45,7 @@ meta/weekly-reading/log.md
       未取得 → 不寫 source/project-link/review-card/log，整批中止
 [ ] source 寫入範圍僅限 raw/sources/<articles|papers|videos|books>/（不含 french）
 [ ] 寫入範圍僅限本檔「寫入範圍」列出的五類路徑
-[ ] project-link / review-card frontmatter：type: output + output_kind 正確
+[ ] project-link frontmatter：type: output + output_kind 正確（review card 已停產，不再產出）
 [ ] source 正文不改寫；備選只存標題/連結/理由/評分
 [ ] 不改 meta/index.md、meta/log.md、meta/lint.md；不改 tools/kb/*.mjs；不動 wiki/projects/
 [ ] commit 前已執行 git status，確認工作區只有本輪 weekly-reading 相關變更（見 FAILURE-HANDLING.md 第 7 項）

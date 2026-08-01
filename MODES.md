@@ -6,7 +6,7 @@
 ## strict mode（重要文章、首次驗證、預設）
 
 1. 候選報告 → 人工確認（三選一）
-2. 產 **6 份 preview**：source-note / concept-note / project-link / review-card / weekly-log / safety-check（存 `config.paths.runsDir`/YYYY-Www/`config.paths.previewDirName`/）
+2. 產 **5 份 preview**：source-note / concept-note / project-link / weekly-log / safety-check（存 `config.paths.runsDir`/YYYY-Www/`config.paths.previewDirName`/）
 3. preview 逐項審核
 4. 正式寫入 vault
 5. `npm run kb:index`
@@ -24,7 +24,6 @@
 
 可簡化：
 - preview 從 6 份**合併為 1 份 summary preview**（涵蓋四類筆記要點 + safety check 結果）
-- review card **允許 0 題**
 - project-link 無明確關聯時**不產**
 - `npm run kb:lint` **可延後**（例如月底批次跑），但 commit 前必須至少人工確認「無明顯 broken link / frontmatter 錯誤」
 - 若 lint 延後，**必須在 weekly log 標記 `lint_status: deferred`**，待補跑後改為 `lint_status: passed`

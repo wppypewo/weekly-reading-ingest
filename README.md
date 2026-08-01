@@ -9,7 +9,7 @@
 
 ## 1. 產品定位
 
-私人用 Claude routine + Obsidian 精讀策展工作流。每週由 Claude routine 搜尋高品質文章/論文，產出 1 主選 + 2 備選候選報告，在 Claude 界面等待使用者確認；確認後才把主選轉成 Obsidian 可吸收的知識筆記（source / concept / project-link / review-card）。
+私人用 Claude routine + Obsidian 精讀策展工作流。每週由 Claude routine 搜尋高品質文章/論文，產出 1 主選 + 2 備選候選報告，在 Claude 界面等待使用者確認；確認後才把主選轉成 Obsidian 可吸收的知識筆記（source / concept / project-link）。
 
 ## 2. 非目標
 
