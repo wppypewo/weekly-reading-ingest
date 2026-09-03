@@ -112,7 +112,7 @@
 ## 可能的 Project Link
 
 - **weekly-reading-ingest / Ricky-KnowledgeBase**：文中「context 是有限資源、找最小高訊號 token 集合」可反過來檢查我把 SKILL.md 拆成 SAFETY.md / FAILURE-HANDLING.md / MODES.md 的分層是否符合此原則。
-- portfolio-tracker / movie-app / fashion-archive：本週沒有明確專案連結。
+- portfolio-tracker / movie-app：本週沒有明確專案連結。
 
 ## Free Access 判斷依據
 

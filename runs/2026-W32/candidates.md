@@ -150,7 +150,7 @@
 - 主推：`wiki/concepts/ai-workflow/coding-agent-productivity-proxy-gap`——編碼代理的產出提升與品質代價分別被不同指標捕捉，選哪個指標就決定了結論。
 - 次選：`wiki/concepts/ai-workflow/agent-adoption-social-diffusion`——採用由同儕曝露驅動（跳級同儕 25%+ 使用 → 勝率 +216%），留存由個人行為量驅動；兩者的預測因子幾乎不重疊。
 
-**可能的 project link**：本週沒有明確專案連結。現有五個專案（portfolio-tracker、movie-app、fashion-archive、personal-website、skill-portability）中，四個在 maintenance 或 completed，personal-website 尚未初始化，沒有一個以「AI 工作流本身」為主題。硬連到 weekly-reading-ingest 工具專案也不成立——那是工具，不是研究對象。
+**可能的 project link**：本週沒有明確專案連結。現有四個專案（portfolio-tracker、movie-app、personal-website、skill-portability）中，三個在 maintenance 或 completed，personal-website 尚未初始化，沒有一個以「AI 工作流本身」為主題。硬連到 weekly-reading-ingest 工具專案也不成立——那是工具，不是研究對象。
 
 ---
 

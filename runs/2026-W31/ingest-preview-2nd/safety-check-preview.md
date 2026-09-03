@@ -49,7 +49,7 @@ INDEX / LINT / COMMIT    → **尚未執行**，等使用者審核 preview
 
 **檔名衝突檢查**：三個新增路徑均與 W31 第一篇（`2026-W31-relationship-quality-predictability`）不同名，無衝突。寫入前仍須實測確認檔案不存在。
 
-**project-link 不產**：五個專案（fashion-archive / movie-app / personal-website / portfolio-tracker / skill-portability）皆為技術性專案，與本篇無實質關聯。依 `FAILURE-HANDLING.md` D 區規定寫「本週沒有明確專案連結」，不硬連。故本輪為 **5 份 preview**（與第一篇一致，非 6 份）。
+**project-link 不產**：四個專案（movie-app / personal-website / portfolio-tracker / skill-portability）皆為技術性專案，與本篇無實質關聯。依 `FAILURE-HANDLING.md` D 區規定寫「本週沒有明確專案連結」，不硬連。故本輪為 **5 份 preview**（與第一篇一致，非 6 份）。
 
 ## DEPTH_CHECK 實測（依 2026-08-01 下修後的 6,000 字下限）
 

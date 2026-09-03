@@ -26,6 +26,6 @@
 - User confirmed：yes（確認主選）
 - 全文取得狀態：**已讀全文**（arXiv HTML 版；PDF 版 WebFetch 只回傳 binary，依 FAILURE-HANDLING 改走官方 HTML 入口重試成功）
 - Caveats：preprint 未經同行評審；結果依賴作者自定的八欄位 belief schema；只建立相關未建立因果；受控實驗規模刻意小；與 skill-portability 實驗屬概念呼應而非同一件事，不得寫成「驗證了我的結論」；source/concept confidence 標 medium
-- 本週選題同質性：三篇候選皆屬 ai-engineering 且主題相近。design domain 在 vault 為 0 篇且 fashion-archive 剛完工，本應是明顯缺口，但本輪只搜到 SEO 內容農場等級的「2026 設計趨勢」列表文，不符品質門檻，依規定不硬湊
+- 本週選題同質性：三篇候選皆屬 ai-engineering 且主題相近。design domain 在 vault 為 0 篇，本應是明顯缺口，但本輪只搜到 SEO 內容農場等級的「2026 設計趨勢」列表文，不符品質門檻，依規定不硬湊
 - Status：ingested（已正式寫入 vault）
 ```
