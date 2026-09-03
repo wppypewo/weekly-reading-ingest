@@ -35,8 +35,8 @@
 5. 每篇明確標記 Free Access: Yes / No / Unclear。
    - No 不得列為主選。
    - Unclear 原則上不得列為主選，除非有明確免費替代版（arXiv、作者 PDF、官方開放版）並寫出來源。
-6. 預判每篇候選的 concept domain，只能是 allowedConceptDomains 裡的值
-   （ai-engineering / ai-workflow / design / finance / french）。
+6. 預判每篇候選的 concept domain，只能是 `weekly-reading.config.json` 當下
+   `allowedConceptDomains` 裡的值；本檔不重抄清單，避免與設定漂移。
    - 無法歸入者：Obsidian Fit 降低，原則上不得列為主選，可標記「需要人工 domain 決策」。
    - 不得使用 other，不得新增 domain。
 7. 判斷主選：不能只看總分，需說明為何是主選、為何勝過兩篇備選、補的知識缺口、
@@ -80,7 +80,7 @@
 - 不自動寫 vault——curate 階段、preview 階段都不寫,只有經過確認與 preview 審核後才寫。
 - 不自動 commit。
 - 不自動 push。
-- 不自動新增 domain——只能用 `allowedConceptDomains` 既有五個值,無法歸入時走 `DOMAIN_DECISION`,不得自創新 domain 或塞進 `other`。
+- 不自動新增 domain——只能用 `allowedConceptDomains` 當下列出的值；無法歸入時走 `DOMAIN_DECISION`，不得自創新 domain 或塞進 `other`。
 - 不自動建立 `wiki/projects/` 下的新專案資料夾——project-link note 一律放 `wiki/outputs/weekly-reading/project-links/`,即使該專案目前在 vault 沒有對應資料夾,也不得自動建立。
 - 不自動把 Backup 完整入庫——備選永遠只記標題、連結、推薦理由、評分到 weekly log,不建立各自的 source/concept/project-link/review-card。
 - 不自動把文章全文複製進 vault——source note 只保留短節錄（引用線索用）與繁體中文重寫摘要,不貼整篇原文。
