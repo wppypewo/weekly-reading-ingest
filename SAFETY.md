@@ -9,7 +9,6 @@
 raw/sources/<allowedSourceFolders 之一>/        ← articles | papers | videos | books（不含 french）
 wiki/concepts/<allowedConceptDomains 之一>/
 wiki/outputs/weekly-reading/project-links/
-wiki/outputs/weekly-reading/review-cards/   ← 僅歷史檔案；2026-08-01 起停產，流程不再寫入
 meta/weekly-reading/log.md
 ```
 

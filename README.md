@@ -37,7 +37,7 @@
 - 不改 `meta/index.md`
 - 不改 `meta/log.md`
 - 不改 `meta/lint.md`
-- 不改 `tools/kb/*.mjs`
+- 不改 `~/ClaudeCode/projects/kb-tools/*.mjs`（2026-09-16 前位於 vault 的 `tools/kb/`）
 - 不寫 `raw/sources/french/`
 - 不在 `wiki/projects/<project>/` 新增檔
 - 不把候選報告寫進 vault
@@ -47,7 +47,7 @@
 - concept domain 只允許 `weekly-reading.config.json` 當下 `allowedConceptDomains` 裡的值；本檔不重抄清單，避免與設定漂移。
 - `psychology`、`sociology` 於 2026-07-31 加入。人際關係與親密關係主題依內容歸入兩者之一，不另設 domain。
 - source folder 只允許 `weekly-reading.config.json` 當下 `allowedSourceFolders` 裡的值；同樣不重抄。
-- 法文來源按內容型態進 `raw/sources/articles/` 或 `raw/sources/papers/`，**不進 `raw/sources/french/`**（該資料夾為既有特殊資料區，v0 不自動寫入，也不修改 `tools/kb/new-source.mjs` 來支援它）
+- 法文來源按內容型態進 `raw/sources/articles/` 或 `raw/sources/papers/`，**不進 `raw/sources/french/`**（該資料夾為既有特殊資料區，v0 不自動寫入，也不修改 `~/ClaudeCode/projects/kb-tools/new-source.mjs` 來支援它）
 
 ### 候選來源管道
 

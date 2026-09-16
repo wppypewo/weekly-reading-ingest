@@ -117,8 +117,7 @@ curate 階段**不對來源設厚度門檻**，因此薄來源會進到這裡。
 
 使用者明確表示不會看，往後 ingest **不產 review card**，preview 也不再包含該份。
 
-- vault 既有 5 張（W26×2、W29×1、W31×2）**保留不刪**，避免破壞既有 wikilink 與 index。
-- `wiki/outputs/weekly-reading/review-cards/` 仍列在 `SAFETY.md` 寫入範圍內，但僅為歷史檔案所在，流程不再寫入。
+- vault 既有 5 張（W26×2、W29×1、W31×2）已於 2026-09-16 依使用者指示刪除，`review-cards/` 目錄一併移除，也不再列於 `SAFETY.md` 寫入範圍。
 - weekly log 不再記 `Review questions count`。
 
 ## 寫入後

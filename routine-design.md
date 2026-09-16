@@ -68,7 +68,7 @@
    - 重新搜尋
    - 本週跳過
 5. **只有「確認主選」「改選備選 A」「改選備選 B」三者會進入 ingest 流程**;其餘三項（補連結後重評、重新搜尋、本週跳過）都不會觸碰 vault。
-6. 即使選了前三項之一,**ingest 前仍要先產 preview**：strict mode 產 6 份（source-note / concept-note / project-link / review-card / weekly-log / safety-check）,quick mode 合併為 1 份 summary preview;存在 `config.paths.runsDir`/<week>/`config.paths.previewDirName`/（見 [`MODES.md`](MODES.md)）。
+6. 即使選了前三項之一,**ingest 前仍要先產 preview**：strict mode 產 5 份（source-note / concept-note / project-link / weekly-log / safety-check；review-card 2026-08-01 起停產）,quick mode 合併為 1 份 summary preview;存在 `config.paths.runsDir`/<week>/`config.paths.previewDirName`/（見 [`MODES.md`](MODES.md)）。
 7. Preview 內容需經審核通過（檢查 excerpts 是否過長、domain 是否合理、評分是否有區分度、project-link 是否假造路徑等）才能進入正式寫入。
 8. Preview 通過後才正式寫入 vault 對應路徑（`raw/sources/`、`wiki/concepts/`、`wiki/outputs/weekly-reading/`、`meta/weekly-reading/log.md`）。
 9. 寫入後依序執行 `npm run kb:index`；接著告知 `npm run kb:lint` 會覆寫 `meta/lint.md`，取得確認後執行 lint。lint 通過後（Blocking=0、Broken links=0、新增檔案無錯誤）才 commit。
