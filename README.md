@@ -88,3 +88,7 @@ runs/                                ← 候選報告與 preview 暫存（config
 ## 10. processed 策略
 
 weekly-reading source 若同輪已產出至少一篇 concept note 且 output notes / weekly log 完成，依 `config.processedPolicy` 標 `processed: true`（concept note 內須含該 source 的 wikilink 以通過 lint），避免 `needs_review` 線性累積。首篇已套用。
+
+## 11. 標題（title）
+
+2026-09-21 起，寫入 vault 的每份筆記 frontmatter 第一行都要有 `title: "中文｜English"`，供 Obsidian 外掛 Front Matter Title 在檔案列表顯示；檔名維持英文 slug。source note 與 project-link 在中文前加週次。細節見 SKILL.md「標題規格」。

@@ -56,6 +56,7 @@ description: 每週精讀策展——使用者確認主選後，把確認對象�
    - 必須保留**關鍵數據的原始數值與原文例句**，不得只寫「研究發現…」這類無數字的轉述；
    - 必須寫出**來源自陳的限制與反論**，並標注證據等級（preprint／同行評審／科普專欄／二手轉述）；
    - **二手轉述的數據**必須補上原始出處，或明確標注「未回溯原始文獻」。
+   - 回溯的外部內容必須標 `[外部 <來源ID>]`，並登記 frontmatter `external_sources`（純 URL，勿用 wikilink，否則 `kb:lint` 判為斷鏈）。
 
 > 2026-07-31 曾短暫加入第四條「必含 `## 我的辨證` 章節」，同日經使用者指示取消，往後 ingest 不再產生該章節。
 
@@ -112,6 +113,17 @@ curate 階段**不對來源設厚度門檻**，因此薄來源會進到這裡。
 ### 與深度規格的關係
 
 字數下限（6,000）不得靠違反本節來達成。若把路標語、重複粗體、裝飾性表格拿掉後字數低於下限，正確做法是回溯更多原始文獻，不是把話說得更繞。
+
+## 標題規格（2026-09-21 新增）
+
+vault 用 Obsidian 外掛 Front Matter Title 在檔案列表顯示 frontmatter 的 `title`，檔名維持英文 slug 給腳本與 AI 用。
+本輪寫入的每一份筆記（source、concept、project-link）frontmatter 第一行必須是 `title`：
+
+- 格式：`title: "中文｜English"`，分隔符為全形「｜」，一律加雙引號。
+- source note 與 project-link 在中文前加週次，例如 `"W39 Dario Amodei：我們接近指數成長的尾聲｜Dario Amodei: We Are Near the End of the Exponential"`。
+- concept note 不加週次，取 H1 的主標題，副標題可省略。
+- preview 必須包含這一行，使用者確認 preview 時一併確認標題。
+- `kb:lint` 對缺 `title` 的檔案報 warning（Missing title）。
 
 ## review card：2026-08-01 起停產
 
