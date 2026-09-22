@@ -7,12 +7,11 @@
 
 ```
 raw/sources/<allowedSourceFolders 之一>/        ← articles | papers | videos | books（不含 french）
-wiki/concepts/<allowedConceptDomains 之一>/
-wiki/outputs/weekly-reading/project-links/
+wiki/concepts/<allowedConceptDomains 之一>/        ← concept 與 project-link（YYYY-Www-<slug>.md）都放這裡
 meta/weekly-reading/log.md
 ```
 
-所有路徑相對於 `config.vaultRoot`。若 `wiki/outputs/weekly-reading/` 或 `meta/weekly-reading/` 尚不存在，建立前須先取得使用者確認。
+所有路徑相對於 `config.vaultRoot`。若 `meta/weekly-reading/` 尚不存在，建立前須先取得使用者確認。
 
 ## 寫入紅線（永不觸碰）
 
@@ -21,7 +20,7 @@ meta/weekly-reading/log.md
 - 不改 `meta/log.md`
 - 不改 `tools/kb/*.mjs`（含不為支援 french 而修改 `new-source.mjs`）
 - 不寫 `raw/sources/french/`（既有特殊資料區）
-- 不在 `wiki/projects/<project>/` 新增或修改檔（project-link 一律放 `wiki/outputs/weekly-reading/project-links/`）
+- 不在 `wiki/projects/<project>/` 新增或修改檔（project-link 一律放對應的 `wiki/concepts/<domain>/`）
 - 不把候選報告（`candidates.md`）寫進 vault
 - 不把文章全文複製進 vault（source note 只存短節錄 + 繁中重寫摘要）
 - 不自動 commit、不自動 push

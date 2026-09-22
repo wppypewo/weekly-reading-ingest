@@ -48,7 +48,7 @@ description: 每週精讀策展——搜尋候選、評分、產出 1 主選 + 2
 - 不得改 `meta/index.md`、`meta/log.md`、`meta/lint.md`。
 - 不得改 `tools/kb/*.mjs`。
 - 不得改 `wiki/projects/` 下任何檔案。
-- 不得把候選報告寫進 vault（包含 `wiki/outputs/weekly-reading/` 或任何路徑）。
+- 不得把候選報告寫進 vault（任何路徑都不行）。
 - 不得因總分最高就自動決定主選（需有區分度的理由說明）。
 - 不得推薦付費牆內容作為主選。
 - 不得用低品質文章湊滿 1 主選 + 2 備選——候選不足時寧可少於 3 篇或回報「本週無合格候選」。

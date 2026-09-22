@@ -45,7 +45,7 @@
 ## 6. Domain / Source Folder 規則
 
 - concept domain 只允許 `weekly-reading.config.json` 當下 `allowedConceptDomains` 裡的值；本檔不重抄清單，避免與設定漂移。
-- `psychology`、`sociology` 於 2026-07-31 加入。人際關係與親密關係主題依內容歸入兩者之一，不另設 domain。
+- 心理學、社會學、文化理論與人際／親密關係主題都歸 `human-sciences`，不另設 domain。
 - source folder 只允許 `weekly-reading.config.json` 當下 `allowedSourceFolders` 裡的值；同樣不重抄。
 - 法文來源按內容型態進 `raw/sources/articles/` 或 `raw/sources/papers/`，**不進 `raw/sources/french/`**（該資料夾為既有特殊資料區，v0 不自動寫入，也不修改 `~/ClaudeCode/projects/kb-tools/new-source.mjs` 來支援它）
 

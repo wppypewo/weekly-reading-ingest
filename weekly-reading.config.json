@@ -25,10 +25,8 @@
   "allowedConceptDomains": [
     "ai-engineering",
     "ai-workflow",
-    "culture-theory",
     "french",
-    "psychology",
-    "sociology"
+    "human-sciences"
   ],
   "allowedSourceFolders": [
     "articles",
