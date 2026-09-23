@@ -8,5 +8,5 @@
 - [x] safety-check preview（含 DEPTH_CHECK 實測）
 - [x] 寫入 vault 三處
 - [x] npm run kb:index（sources=20、concepts=22）
-- [x] kb:lint：117 檔，Blocking 0、Warnings 1（新頁未列入 human-sciences README，待使用者決定）
-- [x] commit（使用者 2026-09-23 指示「都commit」）：vault `c39e97f`；未 push
+- [x] kb:lint：117 檔，Blocking 0、Warnings 0（README 漏列一項已依使用者指示於 vault `19e4055` 補上）
+- [x] commit 與 push（使用者 2026-09-23 指示「都commit」「push」）：vault `c39e97f`、`19e4055`
