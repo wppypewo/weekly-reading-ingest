@@ -9,6 +9,14 @@
     "time": "10:07",
     "timezone": "Asia/Taipei"
   },
+  "cloud": {
+    "detectEnv": "CLAUDE_CODE_REMOTE",
+    "vaultRepo": "zhuang060329-bit/ricky-knowledgebase",
+    "vaultRootRelative": "../ricky-knowledgebase",
+    "vaultReadOnly": true,
+    "reportBranchPrefix": "claude/",
+    "note": "雲端 routine 時（環境變數 CLAUDE_CODE_REMOTE=true）不用 vaultRoot，改用相對於 toolRoot 的 vaultRootRelative；解析規則見 routine-design.md 4.6。clone 目錄名未經實測，以 routine-test-001 結果為準"
+  },
   "localScheduler": {
     "enabled": false
   },

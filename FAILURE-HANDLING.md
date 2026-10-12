@@ -32,8 +32,13 @@
 
 | 情境 | 處理 |
 |---|---|
-| routine 無法存取本機檔案（例如 Mac 遷移前後路徑變動、或無檔案系統權限） | 候選報告只在 Claude 界面輸出，不產生 `runs/` 暫存檔，也不嘗試寫入 Obsidian vault 代替保存；confirmed ingest 仍須在能存取 `config.vaultRoot` 的本機環境執行 |
-| `config.vaultRoot` 指向的路徑不存在（例如剛換機器尚未改 config） | 停止；回報 vaultRoot 不可達；要求使用者先更新 `weekly-reading.config.json` 的 `vaultRoot`，不要猜測新路徑 |
+| `config.vaultRoot` 指向的路徑不存在（本機；例如剛換機器尚未改 config） | 停止；回報 vaultRoot 不可達；要求使用者先更新 `weekly-reading.config.json` 的 `vaultRoot`，不要猜測新路徑 |
+| 雲端 routine 找不到 vault clone（`cloud.vaultRootRelative` 不存在，同層也沒有 remote 對應 `cloud.vaultRepo` 的目錄；通常是 routine 沒掛 vault repo） | 停止；回報 vault 不可達與 toolRoot 同層實際有哪些目錄；不產報告，不憑記憶猜使用者近況 |
+| 雲端 routine 讀到的 vault 可能過時（vault 本機有未推送的 commit） | 照讀，但在報告「本週主題判斷」寫出 vault clone 的 HEAD commit 與日期，讓使用者判斷 context 是否過時 |
+| 雲端網路擋下來源（`403`、`x-deny-reason: host_not_allowed`） | 不算整輪失敗；該篇照 A 區「抓不到全文」處理，Free Access 無法驗證就標 `Unclear`；報告末尾列出被擋的網域，供使用者決定是否加進 Custom allowlist |
+| 雲端缺 `pdftotext` | 先看 setup script 是否裝了 `poppler-utils`；沒有就改用其他方式讀 PDF 或標「未取得全文」，不憑 abstract 硬評 Idea Density |
+| 雲端推送 `claude/` 分支失敗 | 報告留在 session 對話中，不視為失敗；不改推 master，不寫 vault 代替保存 |
+| confirmed ingest | 一律在能存取 `config.vaultRoot` 的本機執行；雲端 routine 不做 ingest |
 
 ## D. 內容品質失敗情境
 

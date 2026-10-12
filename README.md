@@ -6,6 +6,7 @@
 - **Claude routine 自動觸發尚未真實測試**——至今全為手動執行。
 - **暫不建議立刻掛 routine**；建議先手動跑 2–3 週確認會持續使用，並完成路徑可遷移性與穩定性修復後再開。
 - 任何文件都不得把 routine 寫成「已完成」。
+- 2026-10-12 決定執行位置為**雲端 routine**；適配設計見 `routine-design.md` 4.6，試跑清單見 `runs/routine-test-001/checklist.md`，皆未實測。`config.routine.enabled` 在試跑通過前維持 `false`。
 
 ## 1. 產品定位
 
@@ -17,7 +18,7 @@
 - 不做多使用者
 - 不做 Notion / Google Drive 整合
 - 不做本地 OS 排程器（cron / launchd / Windows Task Scheduler）
-- 不做自動 commit / push
+- 不做自動 commit / push（唯一例外：雲端 routine 把候選報告推到工具 repo 的 `claude/` 分支；vault 永遠不由 routine 寫入）
 
 ## 3. 兩階段 Workflow
 
@@ -58,6 +59,7 @@
 ## 7. Routine 語意
 
 - Claude routine（`routine.provider: "claude"`）每週六 10:07（Asia/Taipei）搜尋候選，這是 routine 行為，**不是本地 OS 排程器**。
+- 執行位置是雲端：每次 run 從 GitHub clone 工具 repo 與 vault repo，vault 只讀，報告推到 `claude/` 分支。ingest 一律在本機做。
 - `localScheduler.enabled` 固定 `false`：不建立任何本機排程器。
 - 手機備忘錄 / 提醒事項只提醒使用者去 Claude 確認本週主選，不是系統依賴，不連 Obsidian、不觸發任何寫入。
 
@@ -74,11 +76,12 @@ MODES.md                             ← strict / quick 模式
 runs/                                ← 候選報告與 preview 暫存（config.paths.runsDir）
   dry-run-001/                       ← v0 fixture，保留進 git
   real-curate-001/                   ← v0 首篇 fixture，保留進 git
+  routine-test-001/                  ← 第一次雲端 routine 試跑檢查清單
 .claude/skills/weekly-reading-curate/SKILL.md
 .claude/skills/weekly-reading-ingest/SKILL.md
 ```
 
-- 路徑去硬編碼：實際 vault 路徑只放在 `config.vaultRoot`；文件改用相對概念（工具專案根目錄 = `toolRoot`、`config.paths.runsDir`、`config.paths.previewDirName`）。換機器時只需改 `config.vaultRoot`。
+- 路徑去硬編碼：實際 vault 路徑只放在 `config.vaultRoot`；文件改用相對概念（工具專案根目錄 = `toolRoot`、`config.paths.runsDir`、`config.paths.previewDirName`）。換機器時只需改 `config.vaultRoot`。雲端 routine 不用 `vaultRoot`，改用 `config.cloud.vaultRootRelative`（見 curate SKILL 職責 1）。
 - skill 放在本工具專案內，不放進 vault 的 `.claude/skills/`，避免污染既有 KB skills（`kb-source-intake`、`kb-ingest` 等）。
 
 ## 9. strict / quick 模式

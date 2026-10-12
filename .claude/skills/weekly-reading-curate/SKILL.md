@@ -15,7 +15,9 @@ description: 每週精讀策展——搜尋候選、評分、產出 1 主選 + 2
 
 ## 職責
 
-1. 讀取 `weekly-reading.config.json`（`vaultRoot`、`allowedConceptDomains`、`allowedSourceFolders`、`weeklyPickCount`、`freeOnly` 等）。
+1. 讀取 `weekly-reading.config.json`（`vaultRoot`、`cloud`、`allowedConceptDomains`、`allowedSourceFolders`、`weeklyPickCount`、`freeOnly` 等），並決定 vault 根目錄：
+   - 本機（環境變數 `CLAUDE_CODE_REMOTE` 不是 `true`）：用 `config.vaultRoot`。
+   - 雲端 routine（`CLAUDE_CODE_REMOTE=true`）：用 toolRoot 加上 `config.cloud.vaultRootRelative`；不存在時，找 toolRoot 的同層目錄中 git remote 對應 `config.cloud.vaultRepo` 者；仍找不到就照 `FAILURE-HANDLING.md` C 區停止，不猜路徑。
 2. 讀取必要的 vault context（只讀，不寫）：
    - `schema/context/current-focus`
    - `wiki/projects/*/current-status`
@@ -39,7 +41,10 @@ description: 每週精讀策展——搜尋候選、評分、產出 1 主選 + 2
      - 撐不起：**必須在報告中列出要一併回溯的原始文獻清單**（標題 + 連結 + 厚度），作為主選的一部分。缺這份清單的薄來源不得列為 Main Pick。
      - 嚴禁以「ingest 時再想辦法湊字數」帶過。字數是靠補材料達成，不是靠灌水達成。
 7. 產出候選報告（格式見下方），輸出到 Claude 界面。
-8. 若本地 Claude Code 可存取檔案，**另外**存一份到 `runs/YYYY-Www/candidates.md`；若執行環境無法存取本機檔案（例如 routine 在無檔案系統存取權的環境執行），報告只留在 Claude 界面對話中，不視為失敗，也不嘗試用任何方式寫入 Obsidian vault 來代替保存。
+8. 另存一份到工具專案的 `runs/YYYY-Www/candidates.md`（同週已存在則改 `candidates-v2.md`，不覆寫）：
+   - 本機：只存檔，不 commit、不 push。
+   - 雲端 routine：VM 結束後檔案會消失，所以在**工具 repo** 開 `config.cloud.reportBranchPrefix` 開頭的分支（例：`claude/weekly-reading-2026-W44`），只 commit 這份報告並推到該分支。不得推 master，不得開 PR，不得 commit 報告以外的檔案。
+   - 推送失敗時報告仍留在 session 對話中，不視為失敗，也不嘗試寫入 Obsidian vault 來代替保存。
 
 ## 嚴禁
 
@@ -49,6 +54,7 @@ description: 每週精讀策展——搜尋候選、評分、產出 1 主選 + 2
 - 不得改 `~/ClaudeCode/projects/kb-tools/*.mjs`。
 - 不得改 `wiki/projects/` 下任何檔案。
 - 不得把候選報告寫進 vault（任何路徑都不行）。
+- 雲端 routine 時，vault clone 只讀：不得在其中建立、修改、commit 任何檔案，不得對 vault repo 推任何分支。
 - 不得因總分最高就自動決定主選（需有區分度的理由說明）。
 - 不得推薦付費牆內容作為主選。
 - 不得用低品質文章湊滿 1 主選 + 2 備選——候選不足時寧可少於 3 篇或回報「本週無合格候選」。

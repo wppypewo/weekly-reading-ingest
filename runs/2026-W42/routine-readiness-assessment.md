@@ -139,8 +139,8 @@ routine 與互動 session 共用訂閱額度。本週這次 curate 抓了三篇�
 ### 2. 需要你決定的事
 
 - [x] **執行位置**：雲端 routine，或本機 Desktop 排程。我的建議是本機：現行規格（讀 vault、寫 `runs/`、`pdftotext`、內建瀏覽器備援）全部假設本機環境，改成雲端要動的地方多很多。代價是電腦要開著。→ 2026-10-12 使用者選**雲端**，適配項目見下一條。
-- [ ] **你帶文章來的週怎麼辦**：routine 照跑但你忽略報告，或 routine 先檢查有沒有你指定的文章。
-- [ ] 若選雲端：vault 要不要讓 routine clone、推送頻率、`runs/` 要不要讓它推到 `claude/` 分支、要不要設 branch ruleset、網路要開 Custom 還是 Full。
+- [x] **你帶文章來的週怎麼辦**：routine 照跑但你忽略報告，或 routine 先檢查有沒有你指定的文章。→ 2026-10-12 採建議：routine 照跑，在該次 run 回「補連結後重評」或「本週跳過」，不加偵測機制（routine-design 4.3）。
+- [x] 若選雲端：vault 要不要讓 routine clone、推送頻率、`runs/` 要不要讓它推到 `claude/` 分支、要不要設 branch ruleset、網路要開 Custom 還是 Full。→ 2026-10-12 採建議：clone vault（只讀）、報告推 `claude/` 分支、網路 Custom。ruleset 不設：官方文件說 routine 用你的 GitHub 身分推送，ruleset 分不出你和 routine（routine-design 4.6）。
 
 ### 3. 使用的門檻（建議）
 

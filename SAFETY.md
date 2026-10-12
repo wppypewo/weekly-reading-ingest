@@ -23,13 +23,14 @@ meta/weekly-reading/log.md
 - 不在 `wiki/projects/<project>/` 新增或修改檔（project-link 一律放對應的 `wiki/concepts/<domain>/`）
 - 不把候選報告（`candidates.md`）寫進 vault
 - 不把文章全文複製進 vault（source note 只存短節錄 + 繁中重寫摘要）
-- 不自動 commit、不自動 push
+- 不自動 commit、不自動 push（唯一例外：雲端 routine 的 curate 可把候選報告推到工具 repo 的 `claude/` 分支，見 curate SKILL 第 8 項；vault 永遠不由 routine commit 或 push）
 
 ## Safety Checklist（寫入前必逐項核對）
 
 ```
 [ ] 確認語句屬於 {確認主選, 改選備選 A, 改選備選 B} 之一
-[ ] 對應週候選內容存在（config.paths.runsDir 下 YYYY-Www/candidates.md，或當次對話中的候選報告）
+[ ] 對應週候選內容存在（config.paths.runsDir 下 YYYY-Www/candidates.md，或當次對話中的候選報告；
+      雲端 routine 產的報告在工具 repo 的 claude/ 分支，ingest 前先 git fetch 並讀取該分支上的檔案）
 [ ] 候選報告含評分與主選理由
 [ ] 若為改選備選且觸發低分警示，已向使用者顯示警示文字（見 SKILL.md「低分備選改選警示」）
 [ ] 被選中的文章 / 論文 Free Access 必須為 Yes，或有明確免費替代版（arXiv / 作者 PDF / 官方開放版）
