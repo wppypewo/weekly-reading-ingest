@@ -2,7 +2,7 @@
 
 產出日期：2026-10-12（週一）
 模式：strict（預設）
-狀態：AWAITING_CONFIRMATION
+狀態：SKIPPED（使用者 2026-10-12 回覆「這週跳過」）
 
 > `runs/2026-W42/` 為新建目錄，無同週重跑覆寫問題。
 > 三篇候選都已抓取全文：主選 A&R 與備選 B H&V 是 PDF 轉純文字後讀完正文；備選 A Brynjolfsson 讀的是 arXiv HTML 版，正文與結論已讀，附錄 B–H 未細讀。
@@ -239,4 +239,4 @@ GS4455 課程頁是自然的連結點，但課程頁不是 project，現行 inge
 
 ---
 
-**狀態：AWAITING_CONFIRMATION。未收到上述明確確認語句前，不進入 ingest，不寫入 vault。**
+**狀態：SKIPPED → IDLE。使用者 2026-10-12 回覆「這週跳過」，本週不 ingest，未寫入 vault。三篇候選僅留存於本報告。**
