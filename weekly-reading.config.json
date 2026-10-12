@@ -3,10 +3,10 @@
   "language": "zh-TW",
   "routine": {
     "provider": "claude",
-    "enabled": true,
+    "enabled": false,
     "tested": false,
     "dayOfWeek": "Saturday",
-    "time": "10:00",
+    "time": "10:07",
     "timezone": "Asia/Taipei"
   },
   "localScheduler": {

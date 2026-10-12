@@ -129,16 +129,16 @@ routine 與互動 session 共用訂閱額度。本週這次 curate 抓了三篇�
 
 ### 1. 文件與 config 修正（小改動，可以直接做）
 
-- [ ] SKILL.md 第 49 行、SAFETY.md 第 21、48 行：`tools/kb/*.mjs` 改為 `~/ClaudeCode/projects/kb-tools/*.mjs`
-- [ ] README.md 第 81 行：拿掉「Windows」
-- [ ] routine-design.md 第 98 行：「本機 D 槽」改為「本機檔案」
-- [ ] `config.routine.enabled` 改 `false`，直到試跑通過；排程時間改 10:07
+- [x] SKILL.md 第 49 行、SAFETY.md 第 21、48 行：`tools/kb/*.mjs` 改為 `~/ClaudeCode/projects/kb-tools/*.mjs`
+- [x] README.md 第 81 行：拿掉「Windows」
+- [x] routine-design.md 第 98 行：「本機 D 槽」改為「本機檔案」
+- [x] `config.routine.enabled` 改 `false`，直到試跑通過；排程時間改 10:07（SKILL description、README、routine-design 同步改）
 
-這些本次**沒有改**，因為你只要求評估。要我改的話說一聲。
+2026-10-12 依使用者回覆「修文件殘留和 config」完成。
 
 ### 2. 需要你決定的事
 
-- [ ] **執行位置**：雲端 routine，或本機 Desktop 排程。我的建議是本機：現行規格（讀 vault、寫 `runs/`、`pdftotext`、內建瀏覽器備援）全部假設本機環境，改成雲端要動的地方多很多。代價是電腦要開著。
+- [x] **執行位置**：雲端 routine，或本機 Desktop 排程。我的建議是本機：現行規格（讀 vault、寫 `runs/`、`pdftotext`、內建瀏覽器備援）全部假設本機環境，改成雲端要動的地方多很多。代價是電腦要開著。→ 2026-10-12 使用者選**雲端**，適配項目見下一條。
 - [ ] **你帶文章來的週怎麼辦**：routine 照跑但你忽略報告，或 routine 先檢查有沒有你指定的文章。
 - [ ] 若選雲端：vault 要不要讓 routine clone、推送頻率、`runs/` 要不要讓它推到 `claude/` 分支、要不要設 branch ruleset、網路要開 Custom 還是 Full。
 

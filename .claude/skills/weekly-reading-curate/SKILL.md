@@ -1,6 +1,6 @@
 ---
 name: weekly-reading-curate
-description: 每週精讀策展——搜尋候選、評分、產出 1 主選 + 2 備選報告。當使用者說「本週精讀」「weekly reading curate」「找本週候選」「/weekly-reading-curate」時觸發，或由 Claude routine 每週六 10:00 呼叫。只產報告，不寫 vault。
+description: 每週精讀策展——搜尋候選、評分、產出 1 主選 + 2 備選報告。當使用者說「本週精讀」「weekly reading curate」「找本週候選」「/weekly-reading-curate」時觸發，或由 Claude routine 每週六 10:07 呼叫。只產報告，不寫 vault。
 ---
 
 # weekly-reading-curate
@@ -46,7 +46,7 @@ description: 每週精讀策展——搜尋候選、評分、產出 1 主選 + 2
 - 不得寫入 Obsidian vault 任何路徑。
 - 不得建立 source / concept / project-link / review-card 筆記。
 - 不得改 `meta/index.md`、`meta/log.md`、`meta/lint.md`。
-- 不得改 `tools/kb/*.mjs`。
+- 不得改 `~/ClaudeCode/projects/kb-tools/*.mjs`。
 - 不得改 `wiki/projects/` 下任何檔案。
 - 不得把候選報告寫進 vault（任何路徑都不行）。
 - 不得因總分最高就自動決定主選（需有區分度的理由說明）。

@@ -1,14 +1,14 @@
 # Weekly Reading Ingest — Claude Routine 使用設計
 
-> 本檔只設計「Claude routine 每週六 10:00 如何使用 `weekly-reading-curate`」。**不建立 OS 排程器**（不做 cron / launchd / Windows Task Scheduler），排程行為由 Claude routine 本身負責（對應 `weekly-reading.config.json` 的 `routine.provider: "claude"`）。
+> 本檔只設計「Claude routine 每週六 10:07 如何使用 `weekly-reading-curate`」。**不建立 OS 排程器**（不做 cron / launchd / Windows Task Scheduler），排程行為由 Claude routine 本身負責（對應 `weekly-reading.config.json` 的 `routine.provider: "claude"`）。
 
-> **routine 實測狀態（accurate）：尚未真實測試。** 至今全為手動執行，`config.routine.tested = false`。manual loop 已完成並通過一次真實 ingest，但「每週六 10:00 自動觸發 curate」這個 routine 行為從未實跑。**暫不建議立刻掛 routine**，建議先手動跑 2–3 週再開。本檔不得把 routine 寫成已完成。
+> **routine 實測狀態（accurate）：尚未真實測試。** 至今全為手動執行，`config.routine.tested = false`。manual loop 已完成並通過一次真實 ingest，但「每週六 10:07 自動觸發 curate」這個 routine 行為從未實跑。**暫不建議立刻掛 routine**，建議先手動跑 2–3 週再開。本檔不得把 routine 寫成已完成。
 
 > 失敗情境見 [`FAILURE-HANDLING.md`](FAILURE-HANDLING.md)；strict / quick 模式見 [`MODES.md`](MODES.md)；安全規則見 [`SAFETY.md`](SAFETY.md)。
 
 ## 4.1 Routine 定位
 
-- Claude routine 每週六 10:00（Asia/Taipei）觸發 `weekly-reading-curate`，這是 routine 的行為，不是本機排程器的行為（`localScheduler.enabled` 固定 `false`）。
+- Claude routine 每週六 10:07（Asia/Taipei）觸發 `weekly-reading-curate`，這是 routine 的行為，不是本機排程器的行為（`localScheduler.enabled` 固定 `false`）。
 - 手機備忘錄 / 提醒事項只提醒使用者去 Claude 確認本週主選（`phoneReminder.externalOnly: true`），不連 Obsidian、不觸發任何寫入，不是系統依賴。
 - Claude routine 執行 curate 時**不直接寫 Obsidian vault**——curate 階段的唯一輸出是候選報告。
 - 未確認主選前（即未收到「確認主選」「改選備選 A」「改選備選 B」三者之一），**不得進入 ingest**，不論是 routine 本身或後續任何對話都不可越過這個閘門。
@@ -95,4 +95,4 @@
 | domain 不屬於 `allowedConceptDomains` | 進入 `DOMAIN_DECISION`，停止寫入，等待三選一二次確認（指定既有 domain / 批准不產 concept note / 取消 ingest），未決前不可部分寫入 |
 | 我沒有確認 | 停在 `AWAITING_CONFIRMATION`，模糊語句（看看/可以嗎/先放著/之後再說）不算確認，不寫 vault |
 | 我跳過 | 進 `SKIPPED` → `IDLE`，不寫 vault |
-| routine 無法存取本機 D 槽 | 候選報告只在 Claude 界面輸出，不產生 `runs/` 暫存檔，也不嘗試寫入 Obsidian vault 來代替保存；confirmed ingest 仍須在能存取 vault 的本機環境執行 |
+| routine 無法存取本機檔案（雲端 routine 每次從 GitHub 重新 clone） | 候選報告只在 Claude 界面輸出，不產生 `runs/` 暫存檔，也不嘗試寫入 Obsidian vault 來代替保存；confirmed ingest 仍須在能存取 vault 的本機環境執行 |

@@ -57,7 +57,7 @@
 
 ## 7. Routine 語意
 
-- Claude routine（`routine.provider: "claude"`）每週六 10:00（Asia/Taipei）搜尋候選，這是 routine 行為，**不是本地 OS 排程器**。
+- Claude routine（`routine.provider: "claude"`）每週六 10:07（Asia/Taipei）搜尋候選，這是 routine 行為，**不是本地 OS 排程器**。
 - `localScheduler.enabled` 固定 `false`：不建立任何本機排程器。
 - 手機備忘錄 / 提醒事項只提醒使用者去 Claude 確認本週主選，不是系統依賴，不連 Obsidian、不觸發任何寫入。
 
@@ -78,7 +78,7 @@ runs/                                ← 候選報告與 preview 暫存（config
 .claude/skills/weekly-reading-ingest/SKILL.md
 ```
 
-- 路徑去硬編碼：實際 Windows 路徑只放在 `config.vaultRoot`；文件改用相對概念（工具專案根目錄 = `toolRoot`、`config.paths.runsDir`、`config.paths.previewDirName`）。Mac 遷移時只需改 `config.vaultRoot`。
+- 路徑去硬編碼：實際 vault 路徑只放在 `config.vaultRoot`；文件改用相對概念（工具專案根目錄 = `toolRoot`、`config.paths.runsDir`、`config.paths.previewDirName`）。換機器時只需改 `config.vaultRoot`。
 - skill 放在本工具專案內，不放進 vault 的 `.claude/skills/`，避免污染既有 KB skills（`kb-source-intake`、`kb-ingest` 等）。
 
 ## 9. strict / quick 模式

@@ -18,7 +18,7 @@ meta/weekly-reading/log.md
 - 不改 `meta/index.md`（只由 `npm run kb:index` 更新）
 - 不改 `meta/lint.md`（只由 `npm run kb:lint` 更新）
 - 不改 `meta/log.md`
-- 不改 `tools/kb/*.mjs`（含不為支援 french 而修改 `new-source.mjs`）
+- 不改 `~/ClaudeCode/projects/kb-tools/*.mjs`（含不為支援 french 而修改 `new-source.mjs`）
 - 不寫 `raw/sources/french/`（既有特殊資料區）
 - 不在 `wiki/projects/<project>/` 新增或修改檔（project-link 一律放對應的 `wiki/concepts/<domain>/`）
 - 不把候選報告（`candidates.md`）寫進 vault
@@ -45,7 +45,7 @@ meta/weekly-reading/log.md
 [ ] 寫入範圍僅限本檔「寫入範圍」列出的五類路徑
 [ ] project-link frontmatter：type: output + output_kind 正確（review card 已停產，不再產出）
 [ ] source 正文不改寫；備選只存標題/連結/理由/評分
-[ ] 不改 meta/index.md、meta/log.md、meta/lint.md；不改 tools/kb/*.mjs；不動 wiki/projects/
+[ ] 不改 meta/index.md、meta/log.md、meta/lint.md；不改 ~/ClaudeCode/projects/kb-tools/*.mjs；不動 wiki/projects/
 [ ] commit 前已執行 git status，確認工作區只有本輪 weekly-reading 相關變更（見 FAILURE-HANDLING.md 第 7 項）
 [ ] 候選報告留在 runs/ 或僅存於對話中，不複製進 vault
 [ ] 不 commit、不 push（commit 由使用者明確指示後才做，且只含本輪檔案）
