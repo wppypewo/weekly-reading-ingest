@@ -58,6 +58,6 @@
   },
   "processedPolicy": {
     "markProcessedWhenConceptProduced": true,
-    "note": "weekly-reading source 若同輪已產出至少一篇 concept note 且 output notes/log 完成，可標 processed: true；concept note 內必含該 source 的 wikilink 以通過 lint"
+    "note": "weekly-reading source 若同輪已產出至少一篇 concept note 且 output notes/log 完成，可標 processed: true，並同時把 status 改成 active；concept note 內必含該 source 的 wikilink 以通過 lint"
   }
 }

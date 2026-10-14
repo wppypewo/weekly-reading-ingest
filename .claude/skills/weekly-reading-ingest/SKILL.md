@@ -138,7 +138,7 @@ vault 用 Obsidian 外掛 Front Matter Title 在檔案列表顯示 frontmatter �
 - strict mode：告知並取得確認後跑 `npm run kb:lint`，通過才 commit。
 - quick mode：lint 可延後，但 weekly log 標 `lint_status: deferred`，且 commit 前人工確認無明顯 broken link / frontmatter 錯誤。
 - commit 前先 `git status`，只 `git add` 本輪逐一指定的檔案，不 `git add -A`。
-- source note 若同輪已產出 concept note 且 output / log 完成，依 `config.processedPolicy` 標 `processed: true`（concept note 內須含該 source wikilink 以通過 lint）。
+- source note 若同輪已產出 concept note 且 output / log 完成，依 `config.processedPolicy` 標 `processed: true`，同時把 `status: raw` 改成 `status: active`（vault 規格：source 的 `status` 跟著 `processed` 走）；concept note 內須含該 source wikilink 以通過 lint。不標 processed 時維持 `status: raw`／`processed: false`。
 
 ## 狀態機
 

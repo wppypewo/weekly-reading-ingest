@@ -90,7 +90,7 @@ runs/                                ← 候選報告與 preview 暫存（config
 
 ## 10. processed 策略
 
-weekly-reading source 若同輪已產出至少一篇 concept note 且 output notes / weekly log 完成，依 `config.processedPolicy` 標 `processed: true`（concept note 內須含該 source 的 wikilink 以通過 lint），避免 `needs_review` 線性累積。首篇已套用。
+weekly-reading source 若同輪已產出至少一篇 concept note 且 output notes / weekly log 完成，依 `config.processedPolicy` 標 `processed: true` 並把 `status` 改成 `active`（vault 規格：`raw`／`false`、`active`／`true` 成對），concept note 內須含該 source 的 wikilink 以通過 lint，避免 `needs_review` 線性累積。首篇已套用。
 
 ## 11. 標題（title）
 

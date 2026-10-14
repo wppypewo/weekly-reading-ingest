@@ -7,9 +7,11 @@
 
 ```
 raw/sources/<allowedSourceFolders 之一>/        ← articles | papers | videos | books（不含 french）
-wiki/concepts/<allowedConceptDomains 之一>/        ← concept 與 project-link（YYYY-Www-<slug>.md）都放這裡
+wiki/concepts/<allowedConceptDomains 之一>/        ← concept 與 project-link（YYYY-Www-<slug>-project-link.md）都放這裡
 meta/weekly-reading/log.md
 ```
+
+project-link 檔名一律加 `-project-link` 後綴。source note 是 `YYYY-Www-<slug>.md`，不加後綴會跟 source 同名，Obsidian 的短連結會配錯檔。
 
 所有路徑相對於 `config.vaultRoot`。若 `meta/weekly-reading/` 尚不存在，建立前須先取得使用者確認。
 
@@ -45,6 +47,7 @@ meta/weekly-reading/log.md
 [ ] source 寫入範圍僅限 raw/sources/<articles|papers|videos|books>/（不含 french）
 [ ] 寫入範圍僅限本檔「寫入範圍」列出的五類路徑
 [ ] project-link frontmatter：type: output + output_kind 正確（review card 已停產，不再產出）
+[ ] source frontmatter：processed 與 status 成對（true ↔ active、false ↔ raw）
 [ ] source 正文不改寫；備選只存標題/連結/理由/評分
 [ ] 不改 meta/index.md、meta/log.md、meta/lint.md；不改 ~/ClaudeCode/projects/kb-tools/*.mjs；不動 wiki/projects/
 [ ] commit 前已執行 git status，確認工作區只有本輪 weekly-reading 相關變更（見 FAILURE-HANDLING.md 第 7 項）
