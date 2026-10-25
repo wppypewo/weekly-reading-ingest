@@ -112,7 +112,7 @@
 
 ### Repositories
 
-- 掛兩個：`zhuang060329-bit/weekly-reading-ingest`、`zhuang060329-bit/ricky-knowledgebase`。每次 run 都從 GitHub 預設分支重新 clone。
+- 掛兩個：`wppypewo/weekly-reading-ingest`、`wppypewo/ricky-knowledgebase`。每次 run 都從 GitHub 預設分支重新 clone。
 - 多 repo 的 session 從「所有 clone 的上一層」開始，各 repo 的 `.claude/settings.json` 只讀 `enabledPlugins` 等兩個鍵。官方文件沒寫 clone 目錄名，`config.cloud.vaultRootRelative` 的 `../ricky-knowledgebase` 是推測值，試跑時確認。
 - 因為 session 不在工具 repo 內啟動，專案 skill 不一定自動載入。routine prompt 要明寫：「先讀 `weekly-reading-ingest/.claude/skills/weekly-reading-curate/SKILL.md`，照它執行」。
 - vault 只能讀到**已推送**的內容。2026-10-12 實測 `git ls-remote`：vault 遠端 HEAD `efd4ff3` 與本機相同。之後若本機改了 `schema/context/current-focus.md` 沒推，routine 會讀到舊版。

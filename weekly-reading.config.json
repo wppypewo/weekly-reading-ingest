@@ -11,7 +11,7 @@
   },
   "cloud": {
     "detectEnv": "CLAUDE_CODE_REMOTE",
-    "vaultRepo": "zhuang060329-bit/ricky-knowledgebase",
+    "vaultRepo": "wppypewo/ricky-knowledgebase",
     "vaultRootRelative": "../ricky-knowledgebase",
     "vaultReadOnly": true,
     "reportBranchPrefix": "claude/",
