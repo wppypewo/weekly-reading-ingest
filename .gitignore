@@ -1,6 +1,6 @@
 # Weekly Reading Ingest — .gitignore
 #
-# 保守策略：保留現有 v0 fixture（runs/dry-run-001、runs/real-curate-001）進 git。
+# 保守策略：保留 v0 首篇範例 runs/real-curate-001 進 git（2026-10-26 起其餘週次已移出主線）。
 # 未來週次的 run 檔案「可選擇性提交」，不必全部提交——若某週只是暫存草稿，
 # 可在該週資料夾放一個 .gitignore 或手動不 add，不在此處全量忽略 runs/。
 
@@ -29,5 +29,4 @@ fetch-cache/
 # !FAILURE-HANDLING.md
 # !MODES.md
 # !.claude/skills/
-# !runs/dry-run-001/
 # !runs/real-curate-001/
