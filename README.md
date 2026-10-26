@@ -1,97 +1,45 @@
-# Weekly Reading Ingest（每週精讀策展器）
+# Weekly Reading Ingest
 
-## 0. 目前狀態（accurate）
+English | [繁體中文](README.zh-TW.md)
 
-- **manual loop 已完成**並通過一次真實 ingest（首篇 commit `e0161bb`）：候選 → 確認 → preview → 寫入 → `kb:index` → `kb:lint` → commit。
-- **Claude routine 自動觸發尚未真實測試**——至今全為手動執行。
-- **暫不建議立刻掛 routine**；建議先手動跑 2–3 週確認會持續使用，並完成路徑可遷移性與穩定性修復後再開。
-- 任何文件都不得把 routine 寫成「已完成」。
-- 2026-10-12 決定執行位置為**雲端 routine**；適配設計見 `routine-design.md` 4.6，試跑清單見 `runs/routine-test-001/checklist.md`，皆未實測。`config.routine.enabled` 在試跑通過前維持 `false`。
+A weekly close-reading curator: a pair of Claude Code skills that find one article or paper worth reading closely each week and, only after you confirm, turn it into notes in an Obsidian knowledge base.
 
-## 1. 產品定位
+- **Two stages with a human in between.** `weekly-reading-curate` searches and scores candidates and writes a report with one main pick and two backups; it never writes to the knowledge base. `weekly-reading-ingest` acts only on one of three exact confirmations ("確認主選" confirm main pick, "改選備選 A" / "改選備選 B" switch to backup A / B). Replies like "let me look" or "maybe later" do not count.
+- **Hard limits on writing.** It never edits the knowledge base's index, log or lint files, never touches existing special folders, never adds files inside project folders, and never puts candidate reports into the vault. The full list is in [`SAFETY.md`](SAFETY.md).
+- **One confirmation, a full set of notes.** A confirmed pick becomes a source note, concept note, project link, review card and weekly log entry. Each is written as a preview first, passes a safety check, then goes into the vault, followed by the vault's index and lint scripts.
 
-私人用 Claude routine + Obsidian 精讀策展工作流。每週由 Claude routine 搜尋高品質文章/論文，產出 1 主選 + 2 備選候選報告，在 Claude 界面等待使用者確認；確認後才把主選轉成 Obsidian 可吸收的知識筆記（source / concept / project-link）。
+A personal tool for one user: no app, no multi-user support, no local OS scheduler. The skills, documents and reports are in Traditional Chinese.
 
-## 2. 非目標
+## Status
 
-- 不做 App / Web 產品化
-- 不做多使用者
-- 不做 Notion / Google Drive 整合
-- 不做本地 OS 排程器（cron / launchd / Windows Task Scheduler）
-- 不做自動 commit / push（唯一例外：雲端 routine 把候選報告推到工具 repo 的 `claude/` 分支；vault 永遠不由 routine 寫入）
+- The manual loop works end to end and has completed one real ingest: candidates → confirmation → previews → write → index → lint → commit.
+- Weekly automatic triggering (a Claude cloud routine) **has not been tested**; `routine.enabled` stays `false` in the config. The readiness assessment and the first-run checklist are in [`docs/`](docs/).
 
-## 3. 兩階段 Workflow
+## A complete example
 
-- **`weekly-reading-curate`**：讀取 config 與 vault context，搜尋候選、評分、判斷主選，產出候選報告。**不寫 vault**。
-- **`weekly-reading-ingest`**：只在收到明確確認語句後，才把確認對象寫入 Obsidian vault。
+[`runs/real-curate-001/`](runs/real-curate-001/) holds everything from the first real run:
 
-## 4. 確認語句
+| File | What it is |
+|---|---|
+| `candidates.md` | Candidate report: this week's theme, the main pick and two backups, each scored on source quality, idea density, long-term value, relevance and fit for Obsidian |
+| `ingest-preview/` | The six previews produced after confirmation and before writing: source note, concept note, project link, review card, weekly log, safety check |
+| `closeout.md` | Results of the write, index, lint and commit |
 
-只有以下三種會觸發 ingest，其他語句（包含「看看」「可以嗎」「先放著」「之後再說」）都不算確認：
+## How it works
 
-- 確認主選
-- 改選備選 A
-- 改選備選 B
+| File | Contents |
+|---|---|
+| [`.claude/skills/weekly-reading-curate/`](.claude/skills/weekly-reading-curate/SKILL.md) | Stage one: read the config and vault context, search, score, write the candidate report |
+| [`.claude/skills/weekly-reading-ingest/`](.claude/skills/weekly-reading-ingest/SKILL.md) | Stage two: after a confirmation, produce previews, check them, write them |
+| [`weekly-reading.config.json`](weekly-reading.config.json) | Vault path, allowed concept domains and source folders, main-pick thresholds, modes |
+| [`SAFETY.md`](SAFETY.md) | Write scope, hard limits, safety checklist |
+| [`FAILURE-HANDLING.md`](FAILURE-HANDLING.md) | How each failure stops and is reported |
+| [`MODES.md`](MODES.md) | strict (six previews, lint right away) and quick (merged preview, lint may be deferred); both require the same human confirmation |
+| [`routine-design.md`](routine-design.md) | Design of the weekly automatic trigger (cloud routine, untested) |
+| [`docs/SPEC.md`](docs/SPEC.md) | Full specification: positioning, non-goals, confirmation phrases, hard limits, domain rules, processed policy, title format |
 
-## 5. 寫入紅線
+Open this repository in Claude Code and say "本週精讀" (this week's reading) to start stage one. To actually write notes, point `vaultRoot` in `weekly-reading.config.json` at your own Obsidian vault. The skills assume the vault already has index and lint scripts and a particular folder structure; adapting them to another vault means changing the config and `SAFETY.md` first.
 
-- 不改 `meta/index.md`
-- 不改 `meta/log.md`
-- 不改 `meta/lint.md`
-- 不改 `~/ClaudeCode/projects/kb-tools/*.mjs`（2026-09-16 前位於 vault 的 `tools/kb/`）
-- 不寫 `raw/sources/french/`
-- 不在 `wiki/projects/<project>/` 新增檔
-- 不把候選報告寫進 vault
+## License
 
-## 6. Domain / Source Folder 規則
-
-- concept domain 只允許 `weekly-reading.config.json` 當下 `allowedConceptDomains` 裡的值；本檔不重抄清單，避免與設定漂移。
-- 心理學、社會學、文化理論與人際／親密關係主題都歸 `human-sciences`，不另設 domain。
-- source folder 只允許 `weekly-reading.config.json` 當下 `allowedSourceFolders` 裡的值；同樣不重抄。
-- 法文來源按內容型態進 `raw/sources/articles/` 或 `raw/sources/papers/`，**不進 `raw/sources/french/`**（該資料夾為既有特殊資料區，v0 不自動寫入，也不修改 `~/ClaudeCode/projects/kb-tools/new-source.mjs` 來支援它）
-
-### 候選來源管道
-
-- 除論文與部落格外，**免費取用的英文外刊**（Aeon、Psyche、Noema、Nautilus、The Conversation 等一般刊物）亦為可用候選來源，歸入 `raw/sources/articles/`。
-- 外刊是**新增的一種管道，不是主要來源**，也不是每週必選；`freeOnly: true` 與 Main Pick 的 Free Access 門檻照舊適用，付費牆刊物不得列為主選。
-- 評分時不因「來自外刊」加分或減分，與其他來源一同依五軸評分。
-
-## 7. Routine 語意
-
-- Claude routine（`routine.provider: "claude"`）每週六 10:07（Asia/Taipei）搜尋候選，這是 routine 行為，**不是本地 OS 排程器**。
-- 執行位置是雲端：每次 run 從 GitHub clone 工具 repo 與 vault repo，vault 只讀，報告推到 `claude/` 分支。ingest 一律在本機做。
-- `localScheduler.enabled` 固定 `false`：不建立任何本機排程器。
-- 手機備忘錄 / 提醒事項只提醒使用者去 Claude 確認本週主選，不是系統依賴，不連 Obsidian、不觸發任何寫入。
-
-## 8. 資料夾與文件
-
-```
-weekly-reading.config.json           ← 唯一保留實際路徑（vaultRoot）之處；其餘文件不散落絕對路徑
-README.md
-routine-design.md                    ← Claude routine 使用設計（含 routine 未實測標示）
-SAFETY.md                            ← 寫入範圍、紅線、Safety Checklist（由 ingest SKILL 引用）
-FAILURE-HANDLING.md                  ← 全部失敗情境（由兩個 SKILL 引用）
-MODES.md                             ← strict / quick 模式
-.gitignore
-runs/                                ← 候選報告與 preview 暫存（config.paths.runsDir）
-  dry-run-001/                       ← v0 fixture，保留進 git
-  real-curate-001/                   ← v0 首篇 fixture，保留進 git
-  routine-test-001/                  ← 第一次雲端 routine 試跑檢查清單
-.claude/skills/weekly-reading-curate/SKILL.md
-.claude/skills/weekly-reading-ingest/SKILL.md
-```
-
-- 路徑去硬編碼：實際 vault 路徑只放在 `config.vaultRoot`；文件改用相對概念（工具專案根目錄 = `toolRoot`、`config.paths.runsDir`、`config.paths.previewDirName`）。換機器時只需改 `config.vaultRoot`。雲端 routine 不用 `vaultRoot`，改用 `config.cloud.vaultRootRelative`（見 curate SKILL 職責 1）。
-- skill 放在本工具專案內，不放進 vault 的 `.claude/skills/`，避免污染既有 KB skills（`kb-source-intake`、`kb-ingest` 等）。
-
-## 9. strict / quick 模式
-
-見 [`MODES.md`](MODES.md)。預設 strict（6 份 preview + 即時 lint + commit）；忙碌週可用 quick（合併 1 份 preview、review card 允許 0 題、lint 可延後並在 log 標 `lint_status: deferred`）。**兩模式的人工確認與安全閘門完全相同**，quick 不是無審核模式。
-
-## 10. processed 策略
-
-weekly-reading source 若同輪已產出至少一篇 concept note 且 output notes / weekly log 完成，依 `config.processedPolicy` 標 `processed: true` 並把 `status` 改成 `active`（vault 規格：`raw`／`false`、`active`／`true` 成對），concept note 內須含該 source 的 wikilink 以通過 lint，避免 `needs_review` 線性累積。首篇已套用。
-
-## 11. 標題（title）
-
-2026-09-21 起，寫入 vault 的每份筆記 frontmatter 第一行都要有 `title: "中文｜English"`，供 Obsidian 外掛 Front Matter Title 在檔案列表顯示；檔名維持英文 slug。source note 與 project-link 在中文前加週次。細節見 SKILL.md「標題規格」。
+[MIT](LICENSE). Articles summarised or cited in the `runs/` example belong to their authors; the reports contain only links and summaries.
