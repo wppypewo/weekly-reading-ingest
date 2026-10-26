@@ -1,7 +1,9 @@
 # routine-test-001：第一次雲端 routine 手動試跑檢查清單
 
+> 2026-10-26 補註：本檔原放在 `runs/routine-test-001/checklist.md`，移到 `docs/`；試跑結果仍記在 `runs/routine-test-001/`。
+
 > 狀態：**未執行**。建立日期 2026-10-12。
-> 前提：`runs/2026-W42/routine-readiness-assessment.md` 的使用門檻（W42 起連續 3 週有回應）達標後才跑，最早 W44。
+> 前提：[`routine-readiness-assessment.md`](routine-readiness-assessment.md) 的使用門檻（W42 起連續 3 週有回應）達標後才跑，最早 W44。
 > 方式：建立 routine 時**不加排程 trigger**，只按 Run now 一次。routine 由使用者建立，Claude 不代為建立。
 > 設定依據：`routine-design.md` 4.6。
 

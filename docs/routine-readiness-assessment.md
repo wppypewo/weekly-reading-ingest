@@ -1,5 +1,7 @@
 # 要不要現在掛 Claude routine：評估
 
+> 2026-10-26 補註：本檔原放在 `runs/2026-W42/`，移到 `docs/`。文中的「README」指當時的規格 README，現為 [`SPEC.md`](SPEC.md)；行號是當時的版本。
+
 日期：2026-10-12
 範圍：只評估，不建立 routine、不改 config、不改規格文件。
 依據：README §0 的三個前提（持續使用、路徑可遷移性、穩定性修復）、`runs/` 紀錄、vault `meta/weekly-reading/log.md`（唯讀）、Claude Code 官方文件 [Routines](https://code.claude.com/docs/en/routines) 與 [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks)（2026-10-12 讀取）。
