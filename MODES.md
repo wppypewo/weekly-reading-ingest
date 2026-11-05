@@ -23,7 +23,7 @@
 - commit 前 `git status` 把關
 
 可簡化：
-- preview 從 6 份**合併為 1 份 summary preview**（涵蓋四類筆記要點 + safety check 結果）
+- preview 從 5 份**合併為 1 份 summary preview**（涵蓋四類筆記要點 + safety check 結果）
 - project-link 無明確關聯時**不產**
 - `npm run kb:lint` **可延後**（例如月底批次跑），但 commit 前必須至少人工確認「無明顯 broken link / frontmatter 錯誤」
 - 若 lint 延後，**必須在 weekly log 標記 `lint_status: deferred`**，待補跑後改為 `lint_status: passed`

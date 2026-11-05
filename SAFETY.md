@@ -39,13 +39,14 @@ project-link 檔名一律加 `-project-link` 後綴。source note 是 `YYYY-Www-
       若 Free Access 為 No 或 Unclear → 停止 ingest，回報原因，不寫 vault（FREE_ACCESS_CHECK，無三選一補救）
 [ ] Main Pick 軟門檻：Source Quality ≥ 3、Relevance ≥ 3、Free Access = Yes、domain ∈ allowedConceptDomains
       未滿足者不得自動為 Main Pick；若被選仍須符合本門檻或標「需要人工決策」
+      （domain 不合法不在這項停下，交給下一項的 DOMAIN_DECISION 三選一）
 [ ] concept domain ∈ allowedConceptDomains
       若不屬於 → 進入 DOMAIN_DECISION，停止寫入，等待二次確認
 [ ] 二次確認（僅當觸發 DOMAIN_DECISION 時才檢查）：
       已取得 {指定既有 domain / 批准本次不產 concept note / 取消 ingest} 三者之一
-      未取得 → 不寫 source/project-link/review-card/log，整批中止
+      未取得 → 不寫 source/project-link/log，整批中止
 [ ] source 寫入範圍僅限 raw/sources/<articles|papers|videos|books>/（不含 french）
-[ ] 寫入範圍僅限本檔「寫入範圍」列出的五類路徑
+[ ] 寫入範圍僅限本檔「寫入範圍」列出的三類路徑
 [ ] project-link frontmatter：type: output + output_kind 正確（review card 已停產，不再產出）
 [ ] source frontmatter：processed 與 status 成對（true ↔ active、false ↔ raw）
 [ ] source 正文不改寫；備選只存標題/連結/理由/評分

@@ -33,7 +33,7 @@ description: 每週精讀策展——使用者確認主選後，把確認對象�
 ## 核心規則摘要（細節見 SAFETY.md）
 
 - **Free Access 二次攔截**：curate 已把關，但 ingest 必須獨立再檢；Free Access = No / Unclear → ABORT，不寫任何一類筆記，無三選一補救。
-- **Main Pick 軟門檻**：Source Quality ≥ 3、Relevance ≥ 3、Free Access = Yes、domain ∈ allowedConceptDomains；未滿足者不得自動為 Main Pick。
+- **Main Pick 軟門檻**：Source Quality ≥ 3、Relevance ≥ 3、Free Access = Yes、domain ∈ allowedConceptDomains；未滿足者不得自動為 Main Pick。ingest 的 MAIN_PICK_THRESHOLD_CHECK 只看前兩項分數：Free Access 已由 FREE_ACCESS_CHECK 擋過，domain 交給 DOMAIN_CHECK，才進得了 DOMAIN_DECISION 的三選一。
 - **Domain Decision**：被選內容 domain 不在 `allowedConceptDomains` → 進 `DOMAIN_DECISION`，不寫任何檔，等三選一（指定既有 domain / 批准本次不產 concept note / 取消 ingest）；未決前不可部分寫入。
   - 若「批准本次不產 concept note」：concept note 步驟跳過；只寫 source note 與 project-link note，並更新 weekly log。
 - **法文來源**：法文文章 → `raw/sources/articles/`，法文論文 → `raw/sources/papers/`；不寫 `raw/sources/french/`，不改 `new-source.mjs`；concept note 仍可落 `wiki/concepts/french/`。
@@ -45,9 +45,9 @@ description: 每週精讀策展——使用者確認主選後，把確認對象�
 > 訂立背景：實測發現精讀產出的 concept note 明顯偏薄（W26 兩篇 2,105／2,288 字，W29 一篇 4,145 字），
 > 而同 vault 非精讀產出的 `hopeful-retrofuturism` 有 8,297 字。更嚴重的是 W29 的 source note（4,483 字）
 > **長於**其 concept note（4,145 字），與 vault 2026-07-01「concept note 是唯一知識本體」的決策直接矛盾。
-> 原因是本 SKILL 先前只規範安全與路由，對 concept note 的內容規格是零。以下四條補上這個洞。
+> 原因是本 SKILL 先前只規範安全與路由，對 concept note 的內容規格是零。以下三條補上這個洞。
 
-三條硬性要求，任一不滿足即**不得進入 INDEX**：
+三條硬性要求，在 preview 階段檢查，任一不滿足即**不得進入 SAFETY_CHECK、不得寫入 vault**：
 
 1. **不得短於對應的 source note**（以 `wc -m` 計）。這是 vault 2026-07-01 決策的可檢查形式。深度內容一律放 concept note，不得為了「簡潔」留在 source note。
 2. **字數下限 6,000 字**（以 `wc -m` 計，不含 frontmatter 與末尾 wikilink 清單）。6,000 是下限不是目標——來源撐得起就寫更多，不得因剛過門檻而收尾。（2026-08-01 由 8,000 下修為 6,000。）
@@ -151,23 +151,27 @@ AWAITING_CONFIRMATION
 FREE_ACCESS_CHECK
   ├─ Yes / 有免費替代版 ──► MAIN_PICK_THRESHOLD_CHECK
   └─ No / Unclear ──► ABORT（不寫任何檔，回報原因）
-MAIN_PICK_THRESHOLD_CHECK
-  ├─ SQ≥3 且 RV≥3 且 domain 合法 ──► DOMAIN_CHECK
+MAIN_PICK_THRESHOLD_CHECK（domain 不在這裡判，留給 DOMAIN_CHECK）
+  ├─ SQ≥3 且 RV≥3 ──► DOMAIN_CHECK
   └─ 未達門檻 ──► 標「需要人工決策」，停止，等待使用者裁決
 DOMAIN_CHECK
-  ├─ domain ∈ allowedConceptDomains ──► SAFETY_CHECK
+  ├─ domain ∈ allowedConceptDomains ──► PREVIEW
   └─ domain 不屬於 ──► DOMAIN_DECISION
-                          ├─ ① 指定既有 domain ──► 回 SAFETY_CHECK
-                          ├─ ② 批准本次不產 concept note ──► 回 SAFETY_CHECK
+                          ├─ ① 指定既有 domain ──► PREVIEW
+                          ├─ ② 批准本次不產 concept note ──► PREVIEW（跳過 DEPTH_CHECK）
                           │     concept note 跳過；只寫 source / project-link + log
                           ├─ ③ 取消 ingest ──► ABORT
                           └─ 未選擇 ──► 停留 DOMAIN_DECISION（不寫任何檔）
-SAFETY_CHECK（逐項見 SAFETY.md）
-  ├─ 任一項未過 ──► ABORT（不寫，回報原因）
-  └─ 全部通過 ──► WRITING ──► DEPTH_CHECK ──► INDEX (kb:index) ──► [strict: LINT] ──► COMMIT（本輪檔案）──► DONE
+PREVIEW（草稿寫在 config.paths.runsDir/<week>/config.paths.previewDirName/，不碰 vault；份數見 MODES.md）
+  quick mode 審核合併成 1 份 summary，但 concept note 仍要先有完整草稿，DEPTH_CHECK 才量得到字數
+  └─► DEPTH_CHECK
 
-DEPTH_CHECK（見「concept note 深度規格」）
-  ├─ 三項全過 ──► INDEX
-  └─ 未達 6,000 字或短於 source note ──► 回 WRITING 補材料（僅限回溯原始文獻，嚴禁灌水）
+DEPTH_CHECK（見「concept note 深度規格」，量的是 preview 草稿）
+  ├─ 三項全過 ──► SAFETY_CHECK
+  └─ 未達 6,000 字或短於 source note ──► 回 PREVIEW 補材料（僅限回溯原始文獻，嚴禁灌水）
                                          補材料後仍不足 ──► 停止並回報，等使用者裁決
+
+SAFETY_CHECK（逐項見 SAFETY.md；使用者審核 preview 也在這一步）
+  ├─ 任一項未過 ──► ABORT（不寫，回報原因）
+  └─ 全部通過 ──► WRITING（正式寫入 vault）──► INDEX (kb:index) ──► [strict: LINT] ──► COMMIT（本輪檔案）──► DONE
 ```

@@ -86,7 +86,7 @@ runs/                                ← 候選報告與 preview 暫存（config
 
 ## 9. strict / quick 模式
 
-見 [`MODES.md`](MODES.md)。預設 strict（6 份 preview + 即時 lint + commit）；忙碌週可用 quick（合併 1 份 preview、review card 允許 0 題、lint 可延後並在 log 標 `lint_status: deferred`）。**兩模式的人工確認與安全閘門完全相同**，quick 不是無審核模式。
+見 [`MODES.md`](MODES.md)。預設 strict（5 份 preview + 即時 lint + commit）；忙碌週可用 quick（合併 1 份 preview、無明確關聯時不產 project-link、lint 可延後並在 log 標 `lint_status: deferred`）。**兩模式的人工確認與安全閘門完全相同**，quick 不是無審核模式。
 
 ## 10. processed 策略
 
