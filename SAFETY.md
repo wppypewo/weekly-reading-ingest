@@ -35,7 +35,7 @@ project-link 檔名一律加 `-project-link` 後綴。source note 是 `YYYY-Www-
       雲端 routine 產的報告在工具 repo 的 claude/ 分支，ingest 前先 git fetch 並讀取該分支上的檔案）
 [ ] 候選報告含評分與主選理由
 [ ] 若為改選備選且觸發低分警示，已向使用者顯示警示文字（見 SKILL.md「低分備選改選警示」）
-[ ] 被選中的文章 / 論文 Free Access 必須為 Yes，或有明確免費替代版（arXiv / 作者 PDF / 官方開放版）
+[ ] 被選中的文章 / 論文 Free Access 必須為 Yes（原文付費或不明但有明確免費替代版時標 Yes，並寫出 arXiv / 作者 PDF / 官方開放版來源）
       若 Free Access 為 No 或 Unclear → 停止 ingest，回報原因，不寫 vault（FREE_ACCESS_CHECK，無三選一補救）
 [ ] Main Pick 軟門檻：Source Quality ≥ 3、Relevance ≥ 3、Free Access = Yes、domain ∈ allowedConceptDomains
       未滿足者不得自動為 Main Pick；若被選仍須符合本門檻或標「需要人工決策」
