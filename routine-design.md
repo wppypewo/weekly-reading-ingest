@@ -39,7 +39,8 @@
    1–5，每項附一句理由，評分要有區分度；若三篇都屬高分候選，必須清楚說明各自弱點與排序理由，不能只給接近滿分而沒有取捨）。
 5. 每篇明確標記 Free Access: Yes / No / Unclear。
    - No 不得列為主選。
-   - Unclear 原則上不得列為主選，除非有明確免費替代版（arXiv、作者 PDF、官方開放版）並寫出來源。
+   - 原文付費或不明、但找到明確免費替代版（arXiv、作者 PDF、官方開放版）時標 Yes，並在同欄寫出替代版來源。
+   - Unclear 不得列為主選；找不到替代版只能列為備選或剔除。
 6. 預判每篇候選的 concept domain，只能是 `weekly-reading.config.json` 當下
    `allowedConceptDomains` 裡的值；本檔不重抄清單，避免與設定漂移。
    - 無法歸入者：Obsidian Fit 降低，原則上不得列為主選，可標記「需要人工 domain 決策」。
@@ -80,7 +81,7 @@
 6. 即使選了前三項之一,**ingest 前仍要先產 preview**：strict mode 產 5 份（source-note / concept-note / project-link / weekly-log / safety-check；review-card 2026-08-01 起停產）,quick mode 合併為 1 份 summary preview;存在 `config.paths.runsDir`/<week>/`config.paths.previewDirName`/（見 [`MODES.md`](MODES.md)）。
 7. Preview 內容需經審核通過（檢查 excerpts 是否過長、domain 是否合理、評分是否有區分度、project-link 是否假造路徑等）才能進入正式寫入。
 8. Preview 通過後才正式寫入 vault 對應路徑（`raw/sources/`、`wiki/concepts/`、`meta/weekly-reading/log.md`）。
-9. 寫入後依序執行 `npm run kb:index`；接著告知 `npm run kb:lint` 會覆寫 `meta/lint.md`，取得確認後執行 lint。lint 通過後（Blocking=0、Broken links=0、新增檔案無錯誤）才 commit。
+9. 寫入後依序執行 `npm run kb:index`；接著告知 `npm run kb:lint` 會覆寫 `meta/lint.md`，取得確認後執行 lint。lint 通過後（Blocking=0、Broken links=0、新增檔案無錯誤）回報結果，等使用者明確指示才 commit。
 10. Commit 範圍只含 vault 內本次實際變更的檔案,不含工具專案（`toolRoot`,即含本 config 的目錄,有自己的 git repo)。預設不 push,除非另行要求。
 
 ## 4.4 下週不應自動化的部分

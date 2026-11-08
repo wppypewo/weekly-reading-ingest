@@ -135,8 +135,8 @@ vault 用 Obsidian 外掛 Front Matter Title 在檔案列表顯示 frontmatter �
 ## 寫入後
 
 - 一律執行 `npm run kb:index`。
-- strict mode：告知並取得確認後跑 `npm run kb:lint`，通過才 commit。
-- quick mode：lint 可延後，但 weekly log 標 `lint_status: deferred`，且 commit 前人工確認無明顯 broken link / frontmatter 錯誤。
+- strict mode：告知並取得確認後跑 `npm run kb:lint`；通過後回報結果，等使用者明確指示才 commit。
+- quick mode：lint 可延後，但 weekly log 標 `lint_status: deferred`；commit 同樣等使用者明確指示，且 commit 前人工確認無明顯 broken link / frontmatter 錯誤。
 - commit 前先 `git status`，只 `git add` 本輪逐一指定的檔案，不 `git add -A`。
 - source note 若同輪已產出 concept note 且 output / log 完成，依 `config.processedPolicy` 標 `processed: true`，同時把 `status: raw` 改成 `status: active`（vault 規格：source 的 `status` 跟著 `processed` 走）；concept note 內須含該 source wikilink 以通過 lint。不標 processed 時維持 `status: raw`／`processed: false`。
 
@@ -149,7 +149,7 @@ AWAITING_CONFIRMATION
 (改選備選且低分 → 顯示警示，不需第三次確認，繼續)
   ▼
 FREE_ACCESS_CHECK
-  ├─ Yes / 有免費替代版 ──► MAIN_PICK_THRESHOLD_CHECK
+  ├─ Yes（含已寫出來源的免費替代版）──► MAIN_PICK_THRESHOLD_CHECK
   └─ No / Unclear ──► ABORT（不寫任何檔，回報原因）
 MAIN_PICK_THRESHOLD_CHECK
   ├─ SQ≥3 且 RV≥3 且 domain 合法 ──► DOMAIN_CHECK
@@ -164,7 +164,7 @@ DOMAIN_CHECK
                           └─ 未選擇 ──► 停留 DOMAIN_DECISION（不寫任何檔）
 SAFETY_CHECK（逐項見 SAFETY.md）
   ├─ 任一項未過 ──► ABORT（不寫，回報原因）
-  └─ 全部通過 ──► WRITING ──► DEPTH_CHECK ──► INDEX (kb:index) ──► [strict: LINT] ──► COMMIT（本輪檔案）──► DONE
+  └─ 全部通過 ──► WRITING ──► DEPTH_CHECK ──► INDEX (kb:index) ──► [strict: LINT] ──► 等使用者指示 ──► COMMIT（本輪檔案）──► DONE
 
 DEPTH_CHECK（見「concept note 深度規格」）
   ├─ 三項全過 ──► INDEX

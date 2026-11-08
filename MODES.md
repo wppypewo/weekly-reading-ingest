@@ -11,7 +11,7 @@
 4. 正式寫入 vault
 5. `npm run kb:index`
 6. 告知並取得確認後跑 `npm run kb:lint`
-7. lint 通過後 commit（只含本輪檔案）
+7. lint 通過後，等使用者明確指示再 commit（只含本輪檔案）
 
 ## quick mode（忙碌週，但不犧牲安全）
 
