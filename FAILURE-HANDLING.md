@@ -19,7 +19,7 @@
 | 情境 | 處理 |
 |---|---|
 | 我沒有確認 | 停在 `AWAITING_CONFIRMATION`；模糊語句（看看/可以嗎/先放著/之後再說）不算確認，不寫 vault |
-| 我改選備選 | 走對應 INGEST_A / INGEST_B；若該備選低分，先顯示警示再續（不需第三次確認，除非同時觸發 domain / Free Access 問題） |
+| 我改選備選 | 走同一條 ingest 狀態機，對象換成該備選；若該備選低分，先顯示警示再續（不需第三次確認，除非同時觸發 domain / Free Access 問題） |
 | 我跳過本週 | 進 `SKIPPED` → `IDLE`，不寫 vault |
 | Free Access = No / Unclear | `FREE_ACCESS_CHECK` 直接 ABORT，不寫任何一類筆記，無三選一補救 |
 | domain 不屬於 `allowedConceptDomains` | 進入 `DOMAIN_DECISION`，停止寫入，等待三選一二次確認；未決前不可部分寫入 |
@@ -46,4 +46,3 @@
 |---|---|
 | 只讀到摘要卻被要求 ingest | 在 source note 的 caveats 明確標「未取得全文，僅依摘要/metadata」，confidence 標 `low` 或 `medium`，不偽稱已完整閱讀 |
 | project-link 找不到真實專案關聯 | 寫「本週沒有明確專案連結」，不硬連既有專案 |
-| review card 沒有有價值的問題 | 出 0 題或 1 題，於檔內說明原因，不硬湊到 3 題、不出「請簡述本文」類低價值題 |
