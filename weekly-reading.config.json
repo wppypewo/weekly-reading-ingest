@@ -1,5 +1,6 @@
 {
-  "vaultRoot": "/Users/ricky/ClaudeCode/KnowledgeBase/Ricky-KnowledgeBase",
+  "vaultRoot": "~/ClaudeCode/KnowledgeBase/Ricky-KnowledgeBase",
+  "vaultRootNote": "本機 vault 路徑；~ 是家目錄，使用前先展開成絕對路徑（echo $HOME）。換機器時只改這一處",
   "language": "zh-TW",
   "routine": {
     "provider": "claude",

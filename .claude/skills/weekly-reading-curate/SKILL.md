@@ -16,7 +16,7 @@ description: 每週精讀策展——搜尋候選、評分、產出 1 主選 + 2
 ## 職責
 
 1. 讀取 `weekly-reading.config.json`（`vaultRoot`、`cloud`、`allowedConceptDomains`、`allowedSourceFolders`、`weeklyPickCount`、`freeOnly` 等），並決定 vault 根目錄：
-   - 本機（環境變數 `CLAUDE_CODE_REMOTE` 不是 `true`）：用 `config.vaultRoot`。
+   - 本機（環境變數 `CLAUDE_CODE_REMOTE` 不是 `true`）：用 `config.vaultRoot`；開頭是 `~` 時先展開成家目錄的絕對路徑。
    - 雲端 routine（`CLAUDE_CODE_REMOTE=true`）：用 toolRoot 加上 `config.cloud.vaultRootRelative`；不存在時，找 toolRoot 的同層目錄中 git remote 對應 `config.cloud.vaultRepo` 者；仍找不到就照 `FAILURE-HANDLING.md` C 區停止，不猜路徑。
 2. 讀取必要的 vault context（只讀，不寫）：
    - `schema/context/current-focus`

@@ -13,7 +13,7 @@ meta/weekly-reading/log.md
 
 project-link 檔名一律加 `-project-link` 後綴。source note 是 `YYYY-Www-<slug>.md`，不加後綴會跟 source 同名，Obsidian 的短連結會配錯檔。
 
-所有路徑相對於 `config.vaultRoot`。若 `meta/weekly-reading/` 尚不存在，建立前須先取得使用者確認。
+所有路徑相對於 `config.vaultRoot`（開頭是 `~` 時先展開成家目錄的絕對路徑）。若 `meta/weekly-reading/` 尚不存在，建立前須先取得使用者確認。
 
 ## 寫入紅線（永不觸碰）
 

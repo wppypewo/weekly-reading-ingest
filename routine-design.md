@@ -4,7 +4,7 @@
 
 > **routine 實測狀態（accurate）：尚未真實測試。** 至今全為手動執行，`config.routine.tested = false`。manual loop 已完成並通過一次真實 ingest，但「每週六 10:07 自動觸發 curate」這個 routine 行為從未實跑。**暫不建議立刻掛 routine**，建議先手動跑 2–3 週再開。本檔不得把 routine 寫成已完成。
 
-> **執行位置：雲端 routine**（使用者 2026-10-12 決定）。雲端適配（vault 路徑解析、報告推 `claude/` 分支、網路與 setup script）已寫進本檔 4.6，**同樣未實測**；第一次手動試跑的檢查清單在 [`runs/routine-test-001/checklist.md`](runs/routine-test-001/checklist.md)。
+> **執行位置：雲端 routine**（使用者 2026-10-12 決定）。雲端適配（vault 路徑解析、報告推 `claude/` 分支、網路與 setup script）已寫進本檔 4.6，**同樣未實測**；第一次手動試跑的檢查清單在 [`docs/routine-test-checklist.md`](docs/routine-test-checklist.md)。
 
 > 失敗情境見 [`FAILURE-HANDLING.md`](FAILURE-HANDLING.md)；strict / quick 模式見 [`MODES.md`](MODES.md)；安全規則見 [`SAFETY.md`](SAFETY.md)。
 
