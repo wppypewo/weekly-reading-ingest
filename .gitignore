@@ -30,6 +30,3 @@ fetch-cache/
 # !MODES.md
 # !.claude/skills/
 # !runs/real-curate-001/
-
-# Codex 鏡像（由 .claude/skills 轉出），只留本機、不進版控
-/.agents/
